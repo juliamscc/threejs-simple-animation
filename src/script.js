@@ -33,7 +33,7 @@ renderer.render(scene, camera)
 //Animations
 const tick = () => {
     console.log('tick')
-    window.requestAnimationFrame(tick())
+    window.requestAnimationFrame(tick)
 }
 
 tick()
