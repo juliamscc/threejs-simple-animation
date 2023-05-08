@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -14,8 +15,8 @@ scene.add(mesh)
 
 // Sizes
 const sizes = {
-    width: 800,
-    height: 600
+    width: window.innerWidth,
+    height: window.innerHeight
 }
 
 // Camera
@@ -30,9 +31,27 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
 
+// const aspectRatio = sizes.width / sizes.height
+// const camera = new THREE.OrthographicCamera(- 1 * aspectRatio, 1 * aspectRatio, 1, - 1, 0.1, 100)
+
 //Animations
-const tick = () => {
-    console.log('tick')
+// const clock = new THREE.Clock()
+
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 })
+
+
+const tick = () =>
+{
+    // const elapsedTime = clock.getElapsedTime()
+
+    // Update objects
+    // mesh.position.x = Math.cos(elapsedTime)
+    // mesh.position.y = Math.sin(elapsedTime)
+
+    // Render
+    renderer.render(scene, camera)
+
+    // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
 
